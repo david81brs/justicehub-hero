@@ -1,0 +1,33 @@
+#redtan {
+
+    height:100px;
+    width:100px;
+    background-color:red;
+    color:white;
+    font-family: times new roman;
+    font-style: bold;
+    font-size:12pt;
+    text-align:center;
+    box-shadow: 10px 10px 5px gray;
+    vertical-align: middle;
+
+}
+
+.marginTopContainer {
+    margin-top:50px;
+}
+
+.mainc {
+
+    color:green;
+    box-shadow: 15px 15px 10px gray;
+    margin-bottom:20px;
+    padding: 15px;
+}
+
+.logingbox {
+    margin-top:50px;
+    box-shadow: 5px 5px 2px grey;
+    padding:15px;
+
+}

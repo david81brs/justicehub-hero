@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Events</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{css/main.css}" href="css/main.css">
+    <script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/webjars/popper.js/1.12.9-1/umd/popper.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/fontawesome-free-5.9.0/css/all.min.css"/>
+</head>
+<body>
+<div th:replace="navigation :: navigation"></div>
+
+
+<div class="container marginTopContainer">
+<h2>Indicador - Total de Pessoas Beneficiadas com Ações de Cidadania</h2>
+    <div id="redtan">
+        <b>
+            TPBen
+        </b>
+    </div>
+    <form class="marginTopContainer" method="post">
+        <input type="hidden"
+               name="${_csrf.parameterName}"
+               value="${_csrf.token}"/>
+        <h2>Dados do Evento</h2>
+        <div class="form-group">
+            <label for="eventTitle">Título do Evento:</label>
+            <input type="text" name="eventTitle" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="eventLocation">Local do Evento:</label>
+            <input type="text" name="eventLocation" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="eventStartDate">Data de Início Evento:</label>
+            <input type="date" name="eventStartDate" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="eventEndDate">Data de Fim Evento:</label>
+            <input type="date" name="eventEndDate" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="peopleAttended">Pessoas Atendidas:</label>
+            <input type="text" pattern="[0-9]*" name="peopleAttended" class="form-control">
+        </div>
+        <h2>Dados do Responsável</h2>
+        <div class="form-group">
+            <label for="informer">Nome do Informante:</label>
+            <input type="text" name="informer" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="contacPerson">E-mail:</label>
+            <input type="email" name="contacPerson" class="form-control">
+        </div>
+        <input type="submit" value="Enviar" class="btn btn-primary">
+
+    </form>
+</div>
+</body>
+</html>
