@@ -19,7 +19,6 @@
 
 .mainc {
 
-    color:green;
     box-shadow: 15px 15px 10px gray;
     margin-bottom:20px;
     padding: 15px;
@@ -30,4 +29,13 @@
     box-shadow: 5px 5px 2px grey;
     padding:15px;
 
+}
+
+.folder {
+    #background:black;
+    box-shadow: 5px 5px 2px grey;
+}
+
+h1 {
+    font-family: font-family: Arial Narrow,Arial,sans-serif;
 }

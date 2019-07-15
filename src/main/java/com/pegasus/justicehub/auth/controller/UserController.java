@@ -69,6 +69,12 @@ public class UserController {
         return new ResponseEntity<List<User>>(lu, HttpStatus.OK);
     }
 
+    @GetMapping("/users")
+    public String admin(Model model){
+        List<User> lu = userService.findAll();
+        model.addAttribute("users", lu);
+        return "users";
+    }
 //    @GetMapping({"/", "/welcome"})
 //    public String welcome(Model model) {
 //        return "welcome";

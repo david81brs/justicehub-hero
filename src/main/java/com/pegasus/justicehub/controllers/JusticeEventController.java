@@ -17,7 +17,7 @@ public class JusticeEventController {
     @Autowired
     JusticeEventRepository jer;
 
-    @GetMapping("/")
+    @GetMapping("/index")
     public ModelAndView index(){
         ModelAndView mv = new ModelAndView("index");
         Iterable<JusticeEvent> jevs = jer.findAll();
@@ -40,4 +40,12 @@ public class JusticeEventController {
         jer.save(je);
         return "redirect:/";
     }
+    @GetMapping("/")
+    public String welcome(){
+        return "welcome";
+    }
+
+
+
+
 }

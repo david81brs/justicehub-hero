@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pegasus</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{css/main.css}" href="css/main.css"/>
+    <script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/webjars/popper.js/1.12.9-1/umd/popper.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/fontawesome-free-5.9.0/css/all.min.css"/>
+</head>
+<body>
+<div th:replace="navigation :: navigation"></div>
+
+<div class="container mainc">
+    <h1>Usuários Registrados</h1>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>User</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <div th:each="user : ${users}">
+            <tr>
+                <td>
+                    <i class="fas fa-user-tie fa-2x"></i>
+                    <span th:text="${user.username}"></span>
+                </td>
+                <td>
+                    <a href="/users">
+                        <i class="fas fa-edit fa-2x"></i>
+                        Editar
+                    </a>
+                    <span> | </span>
+                    <a href="/users">
+                        <i class="fas fa-user-minus fa-2x"></i>
+                        Apagar
+                    </a>
+                </td>
+            </tr>
+        </div>
+
+
+        </tbody>
+
+    </table>
+</div>
+</body>
+</html>
