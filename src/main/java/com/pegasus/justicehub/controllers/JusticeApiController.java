@@ -27,20 +27,20 @@ public class JusticeApiController {
 
 
 
-    @RequestMapping(value="/poke_events", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    //@ResponseBody
-
-    public ResponseEntity<List<JusticeEvent>> listAllEvents(){
-        List<JusticeEvent> je = jer.findAll();
-        return new ResponseEntity<List<JusticeEvent>>(je, HttpStatus.OK);
-    }
-
-//    @RequestMapping(value="/poke_events", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Accept=*/*")
-//    @ResponseBody
-//    public ResponseEntity<JusticeEventResponse> listAllEvents(){
+//    @RequestMapping(value="/poke_events", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+//    //@ResponseBody
+//
+//    public ResponseEntity<List<JusticeEvent>> listAllEvents(){
 //        List<JusticeEvent> je = jer.findAll();
-//        return ResponseEntity.ok(new JusticeEventResponse(je));
+//        return new ResponseEntity<List<JusticeEvent>>(je, HttpStatus.OK);
 //    }
+
+    @RequestMapping(value="/poke_events", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Accept=application/json")
+    @ResponseBody
+    public ResponseEntity<JusticeEventResponse> listAllEvents(){
+        List<JusticeEvent> je = jer.findAll();
+        return ResponseEntity.ok(new JusticeEventResponse(je));
+    }
 
 
 

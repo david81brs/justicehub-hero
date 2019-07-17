@@ -9,5 +9,7 @@ public interface UserService {
 
     User findByUsername(String username);
 
+    User findByConfirmationToken(String confirmationToken);
+
     List findAll();
 }
