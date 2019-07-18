@@ -7,7 +7,11 @@ import java.util.List;
 public interface UserService {
     void save(User user);
 
+    User findById(long id);
+
     User findByUsername(String username);
+
+    User findByEmail(String email);
 
     User findByConfirmationToken(String confirmationToken);
 

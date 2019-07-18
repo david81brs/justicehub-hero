@@ -1,9 +1,10 @@
 package com.pegasus.justicehub.auth.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pegasus.justicehub.auth.model.User;
+import com.pegasus.justicehub.auth.repository.UserRepository;
 import com.pegasus.justicehub.auth.service.SecurityService;
 import com.pegasus.justicehub.auth.service.UserService;
+import com.pegasus.justicehub.auth.service.UserServiceImpl;
 import com.pegasus.justicehub.auth.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -21,13 +23,16 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @Autowired
     private SecurityService securityService;
 
     @Autowired
     private UserValidator userValidator;
+
+    @Autowired
+    private UserRepository ur;
 
     @GetMapping("/registration")
     public String registration(Model model){
@@ -75,8 +80,11 @@ public class UserController {
         model.addAttribute("users", lu);
         return "users";
     }
-//    @GetMapping({"/", "/welcome"})
-//    public String welcome(Model model) {
-//        return "welcome";
-//    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteUser(@PathVariable("id") long id){
+        User user = userService.findById(id);
+        ur.delete(user);
+        return "redirect:/users";
+    }
 }
