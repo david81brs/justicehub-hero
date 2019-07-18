@@ -27,8 +27,8 @@ public class User {
     private boolean enabled;
 
     @Column(name = "email", unique = true)
-    @Email(message = "Por gentileza usar um e-mail válido")
-    @NotEmpty(message = "Por gentileza prover um e-mail")
+    //@Email(message = "Por gentileza usar um e-mail válido")
+    //@NotEmpty(message = "Por gentileza prover um e-mail")
     private String email;
 
     @Column(name = "confirmation_token")
