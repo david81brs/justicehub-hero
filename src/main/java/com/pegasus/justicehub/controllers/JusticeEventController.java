@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -43,6 +44,13 @@ public class JusticeEventController {
     @GetMapping("/")
     public String welcome(){
         return "welcome";
+    }
+
+    @GetMapping("/events/delete/{id}")
+    public String deleteEvent(@PathVariable("id") long id){
+        JusticeEvent jev = jer.findById(id);
+        jer.delete(jev);
+        return "redirect:/index";
     }
 
 

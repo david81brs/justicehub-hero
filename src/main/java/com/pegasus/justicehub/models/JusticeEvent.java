@@ -39,6 +39,14 @@ public class JusticeEvent {
     @Column
     private long peopleAttended;
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getInformer() {
         return informer;
     }

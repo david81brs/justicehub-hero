@@ -14,10 +14,7 @@
     <div th:replace="navigation :: navigation"></div>
 <div class="container mainc">
     <h1><i class="fas fa-home"></i> Indicadores</h1>
-    <span>
-        <i class="fas fa-code"></i>
-    </span>
-    <br>
+
     <table class="table table-hover">
         <thead>
         <tr>
@@ -25,16 +22,23 @@
             <th scope="col"># Local</th>
             <th scope="col"># Início</th>
             <th scope="col"># Fim</th>
+            <th scope="col">Actions</th>
 
         </tr>
         </thead>
         <tbody>
         <div th:each="jev : ${jevs}">
             <tr>
-                <td><span th:text="${jev.eventTitle}"></span></td>
+                <td><i class="fas fa-code fa-2x"></i> <span th:text="${jev.eventTitle}"></span></td>
                 <td><span th:text="${jev.eventLocation}"></span></td>
                 <td><span th:text="${#dates.format(jev.eventStartDate, 'dd.MM.yyyy')}"></span></td>
                 <td><span th:text="${#dates.format(jev.eventEndDate, 'dd.MM.yyyy')}"></span></td>
+                <td>
+                    <a th:href="@{/events/delete/{id}/(id=${jev.id})}">
+                        <i class="fas fa-eraser fa-3x"></i>
+                        Remover
+                    </a>
+                </td>
             </tr>
         </div>
 
