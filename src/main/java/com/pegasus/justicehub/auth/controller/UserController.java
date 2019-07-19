@@ -81,7 +81,7 @@ public class UserController {
         return "users";
     }
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("/users/delete/{id}")
     public String deleteUser(@PathVariable("id") long id){
         User user = userService.findById(id);
         ur.delete(user);

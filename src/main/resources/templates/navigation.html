@@ -24,7 +24,6 @@
     <a class="navbar-brand" href="/">
 
             <span>
-
                 <i class="fas fa-horse"></i> Pegasus
             </span>
 
@@ -33,11 +32,14 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-                <a class="nav-link" href="/events">Eventos <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">
+                    <i class="fas fa-home"></i>
+                    Início <span class="sr-only">(current)</span></a>
             </li>
             <div sec:authorize="isAuthenticated()">
                 <li class="nav-item active">
                     <a class="nav-link" href="/logout">
+                        <i class="fas fa-sign-out-alt"></i>
                         <span th:text="${#authentication.getPrincipal().getUsername()}"></span>
                         Logout
                     </a>
@@ -45,7 +47,11 @@
             </div>
             <div sec:authorize="!isAuthenticated()">
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
+
+                    <a class="nav-link" href="/login">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Login
+                    </a>
                 </li>
             </div>
         </ul>
