@@ -12,10 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -81,7 +78,7 @@ public class UserController {
         return "users";
     }
 
-    @GetMapping("/users/delete/{id}")
+    @DeleteMapping("/users/{id}")
     public String deleteUser(@PathVariable("id") long id){
         User user = userService.findById(id);
         ur.delete(user);

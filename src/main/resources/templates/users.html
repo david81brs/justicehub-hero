@@ -14,7 +14,7 @@
 <div th:replace="navigation :: navigation"></div>
 <div class="container mainc">
     <h1>Usuários Registrados</h1>
-    <table class="table table-hover table-striped table-dark">
+    <table class="table table-hover table-striped">
         <thead>
         <tr>
             <th>User</th>
@@ -29,15 +29,14 @@
                     <span th:text="${user.username}"></span>
                 </td>
                 <td>
-                    <a href="/users">
-                        <i class="fas fa-edit fa-2x"></i>
-                        Editar
-                    </a>
-                    <span> | </span>
-                    <a th:href="@{/users/delete/{id}/(id=${user.id})}">
-                        <i class="fas fa-user-minus fa-2x"></i>
-                        Apagar
-                    </a>
+                    <form class="form-inline formInTable" th:action="@{/users/{id}(id=${user.id})}" th:method="GET">
+                        <button class="btn btn-info" type="submit"><i class="fas fa-edit"></i> Editar</button>
+                    </form>
+                    <form class="form-inline formInTable"
+                          th:action="@{/users/{id}(id=${user.id})}" th:method="DELETE">
+                        <input type="hidden" name="id" th:value="${user.id}"/>
+                        <button class="btn btn-danger" type="submit"><i class="fas fa-user-minus"></i> Apagar</button>
+                    </form>
                 </td>
             </tr>
         </div>

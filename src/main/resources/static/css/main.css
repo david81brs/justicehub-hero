@@ -39,3 +39,9 @@
 h1 {
     font-family: font-family: Arial Narrow,Arial,sans-serif;
 }
+
+.formInTable {
+    display: inline;
+    margin:0px;
+    padding:0px;
+}
