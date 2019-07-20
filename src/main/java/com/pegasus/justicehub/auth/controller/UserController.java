@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -76,6 +77,14 @@ public class UserController {
         List<User> lu = userService.findAll();
         model.addAttribute("users", lu);
         return "users";
+    }
+
+    @GetMapping("/users/{id}")
+    public ModelAndView getUserEdit(@PathVariable("id") long id){
+        ModelAndView mv = new ModelAndView("userEdit");
+        User user = userService.findById(id);
+        mv.addObject("user", user);
+        return mv;
     }
 
     @DeleteMapping("/users/{id}")

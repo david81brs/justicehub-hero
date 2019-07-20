@@ -1,8 +1,8 @@
 package com.pegasus.justicehub.models;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonRootName;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -30,10 +30,12 @@ public class JusticeEvent {
 
     @Column
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date eventStartDate;
 
     @Column
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date eventEndDate;
 
     @Column

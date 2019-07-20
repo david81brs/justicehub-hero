@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/webjars/popper.js/1.12.9-1/umd/popper.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/fontawesome-free-5.9.0/css/all.min.css"/>
+    <link rel="stylesheet" th:href="@{css/main.css}" href="css/main.css"/>
+</head>
+<body>
+<div th:replace="navigation :: navigation"></div>
+<div class="container mainc">
+<!--    <h1>TPBen</h1>-->
+<!--    <svg class="folder" width="150px" height="100px">-->
+<!--        <g>-->
+<!--            <text x="50" y="75" fill="none">TPBen</text>-->
+<!--            <polyline points="0,0 0,100 150,100 150,10 50,10 25,0 0,0" stroke="black" stroke-width="1" fill="lightblue"></polyline>-->
+<!--        </g>-->
+
+<!--        </polyline>-->
+<!--    </svg>-->
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-bullseye fa-3x"></i>
+                        TPben
+                    </h5>
+                    <p class="card-text">Registro de ações de cidadania realizadas no período-base.</p>
+                    <a href="/events" class="btn btn-primary">Novo Evento</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-users fa-3x"></i>
+                        Users
+                    </h5>
+                    <p class="card-text">Administração de Usuários do Sistema.</p>
+                    <a href="/users" class="btn btn-primary">Admin</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-user-tag fa-3x"></i>
+                        TPben
+                    </h5>
+                    <p class="card-text">Gerenciamento de Lista de Eventos.</p>
+                    <a href="/index" class="btn btn-primary">Acessar Lista</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-user-tag fa-3x"></i>
+                        Perfis
+                    </h5>
+                    <p class="card-text">Gerenciamento de perfis.</p>
+                    <a href="#" class="btn btn-primary">Visitar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

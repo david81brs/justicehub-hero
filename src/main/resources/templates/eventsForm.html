@@ -5,50 +5,50 @@
     <meta charset="UTF-8">
     <title>Events</title>
     <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
-
     <script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
     <script src="/webjars/popper.js/1.12.9-1/umd/popper.min.js"></script>
     <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/css/fontawesome-free-5.9.0/css/all.min.css"/>
-    <link rel="stylesheet" href="css/main.css">
+    <link type="text/css" rel="stylesheet" href="css/main.css">
 </head>
 <body>
 <div th:replace="navigation :: navigation"></div>
 <div class="container mainc">
-    <form action="/justiceevents" method="post">
+    <form action="@{/justiceevents/{id}(id=${jev.id})}" th:object="${jev}" method="post">
+        <input type="hidden" th:field="${id}" th:method="PUT"/>
         <input type="hidden"
                name="${_csrf.parameterName}"
                value="${_csrf.token}"/>
         <h2>Dados do Evento</h2>
         <div class="form-group">
             <label for="eventTitle">Título do Evento:</label>
-            <input type="text" name="eventTitle" class="form-control">
+            <input type="text" name="eventTitle" class="form-control" th:field="*{eventTitle}">
         </div>
         <div class="form-group">
             <label for="eventLocation">Local do Evento:</label>
-            <input type="text" name="eventLocation" class="form-control">
+            <input type="text" name="eventLocation" class="form-control" th:field="*{eventLocation}">
         </div>
         <div class="form-group">
             <label for="eventStartDate">Data de Início Evento:</label>
-            <input type="date" name="eventStartDate" class="form-control">
+            <input type="date" name="eventStartDate" class="form-control" th:field="*{eventStartDate}">
         </div>
         <div class="form-group">
             <label for="eventEndDate">Data de Fim Evento:</label>
-            <input type="date" name="eventEndDate" class="form-control">
+            <input type="date" name="eventEndDate" class="form-control" th:field="*{eventEndDate}">
         </div>
         <div class="form-group">
             <label for="peopleAttended">Pessoas Atendidas:</label>
-            <input type="text" pattern="[0-9]*" name="peopleAttended" class="form-control">
+            <input type="text" pattern="[0-9]*" name="peopleAttended" class="form-control" th:field="*{peopleAttended}">
         </div>
 <!--        <h2>Dados do Responsável</h2>-->
 <!--        <div class="form-group">-->
 <!--            <label for="informer">Nome do Informante:</label>-->
         <div sec:authorize="isAuthenticated()">
-            <input type="hidden" name="informer" class="form-control" th:value="${#authentication.getPrincipal().getUsername()}">
+            <input type="hidden" name="informer" class="form-control" th:value="${#authentication.getPrincipal().getUsername()}" th:field="*{informer}">
 <!--        </div>-->
 <!--        <div class="form-group">-->
 <!--            <label for="contacPerson">E-mail:</label>-->
-            <input type="hidden" name="contacPerson" class="form-control" th:value="${#authentication.getPrincipal().getUsername()}+'@tjpa.jus.br'">
+            <input type="hidden" name="contacPerson" class="form-control" th:value="${#authentication.getPrincipal().getUsername()}+'@tjpa.jus.br'" th:field="*{contacPerson}">
 <!--        </div>-->
         </div>
         <button type="submit" class="btn btn-primary">

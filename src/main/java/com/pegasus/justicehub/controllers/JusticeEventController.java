@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -31,11 +31,29 @@ public class JusticeEventController {
         return jer.findAll(pageable);
     }
 
+
+    @GetMapping("/justiceevents/{id}")
+    public String editEvent(@PathVariable("id") long id, ModelMap model){
+        JusticeEvent je = jer.findById(id);
+        model.addAttribute("jev",je);
+        return "eventsForm";
+    }
+
     @GetMapping(value="/justiceevents")
     public String getEvent(){
 
         return "events";
     }
+
+//    @PutMapping("/justiceevents/{id}")
+//    public String putEvent(@ResponseBody JusticeEvent nje, @PathVariable("id") long id){
+//        JusticeEvent je = jer.findById(id);
+//        je.setContacPerson(nje.getContacPerson());
+//        je.
+//        jer.save(je);
+//        return "redirect:/justiceevents";
+//    }
+
     @PostMapping(value="/justiceevents")
     public  String postEvent(JusticeEvent je){
         jer.save(je);
@@ -51,6 +69,11 @@ public class JusticeEventController {
         JusticeEvent jev = jer.findById(id);
         jer.delete(jev);
         return "redirect:/index";
+    }
+
+    @GetMapping("/admin")
+    public String getAdmin(){
+        return "adminer";
     }
 
 
