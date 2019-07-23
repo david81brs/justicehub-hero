@@ -22,7 +22,6 @@
             <th scope="col"># Título</th>
             <th scope="col"># Local</th>
             <th scope="col"># Resp</th>
-            <th scope="col"># Contact</th>
             <th scope="col"># Início</th>
             <th scope="col"># Fim</th>
             <th scope="col">Qtd</th>
@@ -36,7 +35,6 @@
                 <td><i class="fas fa-code fa-2x"></i> <span th:text="${jev.eventTitle}"></span></td>
                 <td><span th:text="${jev.eventLocation}"></span></td>
                 <td><span th:text="${jev.informer}"></span></td>
-                <td><span th:text="${jev.contacPerson}"></span></td>
                 <td><span th:text="${#dates.format(jev.eventStartDate, 'dd.MM.yyyy')}"></span></td>
                 <td><span th:text="${#dates.format(jev.eventEndDate, 'dd.MM.yyyy')}"></span></td>
                 <td><span th:text="${jev.peopleAttended}"></span></td>
