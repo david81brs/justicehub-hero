@@ -24,7 +24,7 @@ public class JusticeApiController {
         this.jer = jer;
     }
 
-    @RequestMapping(value = "/poke_events", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Accept=application/json")
+    @RequestMapping(value = "/justiceevents", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<JusticeEventResponse> listAllEvents() {
         List<JusticeEvent> je = jer.findAll();
