@@ -45,14 +45,16 @@ public class JusticeEventController {
         return "events";
     }
 
-//    @PutMapping("/justiceevents/{id}")
-//    public String putEvent(@ResponseBody JusticeEvent nje, @PathVariable("id") long id){
-//        JusticeEvent je = jer.findById(id);
-//        je.setContacPerson(nje.getContacPerson());
-//        je.
-//        jer.save(je);
-//        return "redirect:/justiceevents";
-//    }
+
+    // PUT Mapping
+
+    @PutMapping("/justiceevents")
+    public String putEvent(@PathVariable("id") long id, @RequestBody JusticeEvent nje){
+        JusticeEvent je = jer.findById(id);
+        System.out.println("Put response");
+        jer.save(je);
+        return "ok";
+    }
 
     @PostMapping(value="/justiceevents")
     public  String postEvent(JusticeEvent je){

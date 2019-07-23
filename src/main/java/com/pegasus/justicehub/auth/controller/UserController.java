@@ -3,7 +3,6 @@ package com.pegasus.justicehub.auth.controller;
 import com.pegasus.justicehub.auth.model.User;
 import com.pegasus.justicehub.auth.repository.UserRepository;
 import com.pegasus.justicehub.auth.service.SecurityService;
-import com.pegasus.justicehub.auth.service.UserService;
 import com.pegasus.justicehub.auth.service.UserServiceImpl;
 import com.pegasus.justicehub.auth.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,5 +91,11 @@ public class UserController {
         User user = userService.findById(id);
         ur.delete(user);
         return "redirect:/users";
+    }
+
+    @PostMapping("/v1/users")
+    public String postUser(Model model){
+        System.out.println("POST Done");
+        return "redirect:/";
     }
 }

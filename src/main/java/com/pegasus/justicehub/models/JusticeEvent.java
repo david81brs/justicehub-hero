@@ -104,4 +104,18 @@ public class JusticeEvent {
     public void setPeopleAttended(long peopleAttended) {
         this.peopleAttended = peopleAttended;
     }
+
+    @Override
+    public String toString() {
+        return "JusticeEvent{" +
+                "id=" + id +
+                ", informer='" + informer + '\'' +
+                ", contacPerson='" + contacPerson + '\'' +
+                ", eventTitle='" + eventTitle + '\'' +
+                ", eventLocation='" + eventLocation + '\'' +
+                ", eventStartDate=" + eventStartDate +
+                ", eventEndDate=" + eventEndDate +
+                ", peopleAttended=" + peopleAttended +
+                '}';
+    }
 }
