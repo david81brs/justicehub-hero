@@ -15,6 +15,7 @@
 <body>
 <div th:replace="navigation :: navigation"></div>
 <div class="container mainc">
+    <div th:replace="breadcrumbs :: breadcrumbs"></div>
     <form action="/justiceevents" method="post">
         <input type="hidden"
                name="${_csrf.parameterName}"

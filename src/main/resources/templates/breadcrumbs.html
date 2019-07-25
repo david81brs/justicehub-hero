@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/webjars/popper.js/1.12.9-1/umd/popper.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/fontawesome-free-5.9.0/css/all.min.css"/>
+    <link rel="stylesheet" th:href="@{css/main.css}" href="css/main.css"/>
+</head>
+<body>
+    <nav th:fragment="breadcrumbs" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page"><a href="/admin">Administração</a></li>
+            <li th:if="${#httpServletRequest.requestURI =='/index' || #strings.contains(#httpServletRequest.requestURI,'justiceevents') }" class="breadcrumb-item" aria-current="page"><a href="/index">Lista de Eventos</a></li>
+            <li th:if="${#strings.contains(#httpServletRequest.requestURI,'events') && !#strings.contains(#httpServletRequest.requestURI,'justice')}" class="breadcrumb-item" aria-current="page"><a href="/index">Novo Evento</a></li>
+            <li th:if="${jev != null}" class="breadcrumb-item" aria-current="page" th:text="${jev.eventTitle}"></li>
+
+        </ol>
+    </nav>
+</body>
+</html>
