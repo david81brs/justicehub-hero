@@ -20,7 +20,7 @@
             <li th:if="${#httpServletRequest.requestURI =='/index' || #strings.contains(#httpServletRequest.requestURI,'justiceevents') }" class="breadcrumb-item" aria-current="page"><a href="/index">Lista de Eventos</a></li>
             <li th:if="${#strings.contains(#httpServletRequest.requestURI,'events') && !#strings.contains(#httpServletRequest.requestURI,'justice')}" class="breadcrumb-item" aria-current="page"><a href="/index">Novo Evento</a></li>
             <li th:if="${#strings.contains(#httpServletRequest.requestURI,'users')}" class="breadcrumb-item" aria-current="page"><a href="/users">Usuários</a></li>
-            <li th:if="${jev != null}" class="breadcrumb-item" aria-current="page" th:text="${jev.eventTitle}"></li>
+            <li th:if="${JusticeEvent != null}" class="breadcrumb-item" aria-current="page" th:text="${JusticeEvent.eventTitle}"></li>
 
         </ol>
     </nav>

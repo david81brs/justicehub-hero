@@ -41,7 +41,7 @@ public class JusticeEventController {
 
     @GetMapping(value="/justiceevents")
     public String getEvent(){
-
+git
         return "events";
     }
 
