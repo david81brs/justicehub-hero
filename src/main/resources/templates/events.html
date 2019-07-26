@@ -40,16 +40,9 @@
             <label for="peopleAttended">Pessoas Atendidas:</label>
             <input type="text" pattern="[0-9]*" name="peopleAttended" class="form-control">
         </div>
-<!--        <h2>Dados do Responsável</h2>-->
-<!--        <div class="form-group">-->
-<!--            <label for="informer">Nome do Informante:</label>-->
         <div sec:authorize="isAuthenticated()">
             <input type="hidden" name="informer" class="form-control" th:value="${#authentication.getPrincipal().getUsername()}">
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--            <label for="contacPerson">E-mail:</label>-->
-            <input type="hidden" name="contacPerson" class="form-control" th:value="${#authentication.getPrincipal().getUsername()}+'@tjpa.jus.br'">
-<!--        </div>-->
+            <input type="hidden" name="contacPerson" class="form-control" th:value="${#authentication.getPrincipal().getUsername()}">
         </div>
         <button type="submit" class="btn btn-primary">
             <i class="far fa-save"></i>

@@ -35,7 +35,7 @@ public class JusticeEventController {
     @GetMapping("/justiceevents/{id}")
     public String editEvent(@PathVariable("id") long id, ModelMap model){
         JusticeEvent je = jer.findById(id);
-        model.addAttribute("jev",je);
+        model.addAttribute("JusticeEvent",je);
         return "eventsForm";
     }
 
