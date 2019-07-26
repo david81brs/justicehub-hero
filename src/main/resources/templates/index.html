@@ -14,6 +14,7 @@
 <body>
 <div th:replace="navigation :: navigation"></div>
 <div class="container mainc">
+    <div th:replace="breadcrumbs :: breadcrumbs"></div>
     <h1>Lista de Eventos</h1>
 
     <table class="table table-hover table-striped table-dark">
@@ -32,7 +33,7 @@
         <tbody>
         <div th:each="jev : ${jevs}">
             <tr>
-                <td><i class="fas fa-code fa-2x"></i> <span th:text="${jev.eventTitle}"></span></td>
+                <td><i class="fas fa-code fa-2x"></i><a th:href="@{/justiceevents/{id}(id=${jev.id})}"><span th:text="${jev.eventTitle}"></span></a></td></td>
                 <td><span th:text="${jev.eventLocation}"></span></td>
                 <td><span th:text="${jev.informer}"></span></td>
                 <td><span th:text="${#dates.format(jev.eventStartDate, 'dd.MM.yyyy')}"></span></td>

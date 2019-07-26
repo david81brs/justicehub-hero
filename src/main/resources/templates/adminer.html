@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
@@ -14,15 +14,9 @@
 <body>
 <div th:replace="navigation :: navigation"></div>
 <div class="container mainc">
-<!--    <h1>TPBen</h1>-->
-<!--    <svg class="folder" width="150px" height="100px">-->
-<!--        <g>-->
-<!--            <text x="50" y="75" fill="none">TPBen</text>-->
-<!--            <polyline points="0,0 0,100 150,100 150,10 50,10 25,0 0,0" stroke="black" stroke-width="1" fill="lightblue"></polyline>-->
-<!--        </g>-->
-
-<!--        </polyline>-->
-<!--    </svg>-->
+    <div sec:authorize="isAuthenticated()">
+        <div th:replace="breadcrumbs :: breadcrumbs"></div>
+    </div>
     <div class="row">
         <div class="col-sm-6">
             <div class="card">
