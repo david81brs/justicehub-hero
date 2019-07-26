@@ -15,11 +15,8 @@
 <div th:replace="navigation :: navigation"></div>
 <div class="container mainc">
     <div th:replace="breadcrumbs :: breadcrumbs"></div>
-    <form action="/v1/justiceevents/" th:object="${jev}">
+    <form action="/v1/justiceevents/" th:object="${JusticeEvent}">
         <input type="hidden" th:field="${id}" th:method="PUT"/>
-        <input type="hidden"
-               name="${_csrf.parameterName}"
-               value="${_csrf.token}"/>
         <h2>Dados do Evento</h2>
         <div class="form-group">
             <label for="eventTitle">Título do Evento:</label>
@@ -41,16 +38,9 @@
             <label for="peopleAttended">Pessoas Atendidas:</label>
             <input type="text" pattern="[0-9]*" name="peopleAttended" class="form-control" th:field="*{peopleAttended}">
         </div>
-<!--        <h2>Dados do Responsável</h2>-->
-<!--        <div class="form-group">-->
-<!--            <label for="informer">Nome do Informante:</label>-->
         <div sec:authorize="isAuthenticated()">
             <input type="hidden" name="informer" class="form-control" th:value="${#authentication.getPrincipal().getUsername()}" th:field="*{informer}">
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--            <label for="contacPerson">E-mail:</label>-->
-            <input type="hidden" name="contacPerson" class="form-control" th:value="${#authentication.getPrincipal().getUsername()}+'@tjpa.jus.br'" th:field="*{contacPerson}">
-<!--        </div>-->
+            <input type="hidden" name="contacPerson" class="form-control" th:value="${#authentication.getPrincipal().getUsername()}" th:field="*{contacPerson}">
         </div>
         <button type="submit" class="btn btn-primary">
             <i class="far fa-save"></i>
