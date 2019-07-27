@@ -17,7 +17,7 @@
     <div sec:authorize="isAuthenticated()">
         <div th:replace="breadcrumbs :: breadcrumbs"></div>
     </div>
-    <div class="jumbotron">
+    <div id="jumbotron-welcome" class="jumbotron">
         <div class="row">
             <div class="col">
                 <h1 class="display-4">Olá!</h1>
@@ -33,6 +33,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>
