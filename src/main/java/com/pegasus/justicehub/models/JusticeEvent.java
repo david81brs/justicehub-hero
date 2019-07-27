@@ -30,12 +30,14 @@ public class JusticeEvent {
 
     @Column
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", locale = "pt-BR", timezone = "America/Sao_Paulo")
     private Date eventStartDate;
 
     @Column
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", locale = "pt-BR", timezone = "America/Sao_Paulo")
     private Date eventEndDate;
 
     @Column

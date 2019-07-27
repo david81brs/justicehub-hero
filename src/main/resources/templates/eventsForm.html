@@ -15,8 +15,9 @@
 <div th:replace="navigation :: navigation"></div>
 <div class="container mainc">
     <div th:replace="breadcrumbs :: breadcrumbs"></div>
-    <form action="/v1/justiceevents/" th:object="${JusticeEvent}">
-        <input type="hidden" th:field="${id}" th:method="PUT"/>
+    <form id="form-update" action="/v1/justiceevents" th:action="@{/v1/justiceevents}" th:object="${JusticeEvent}" >
+        <input type="hidden" name="_method" value="PUT"/>
+        <input type="hidden" th:field="*{id}"/>
         <h2>Dados do Evento</h2>
         <div class="form-group">
             <label for="eventTitle">Título do Evento:</label>
@@ -48,6 +49,10 @@
         </button>
 
     </form>
+    <script src="/js/form-update.js"></script>
+    <div id="result">
+
+    </div>
 </div>
 </body>
 </html>

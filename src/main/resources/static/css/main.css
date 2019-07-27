@@ -47,3 +47,7 @@ h1 {
 }
 
 $breadcrumb-divider: quote(">");
+
+a:hover {
+    text-decoration:none;
+}

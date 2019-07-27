@@ -17,7 +17,7 @@
     <div th:replace="breadcrumbs :: breadcrumbs"></div>
     <h1>Lista de Eventos</h1>
 
-    <table class="table table-hover table-striped table-dark">
+    <table class="table table-hover table-striped">
         <thead>
         <tr>
             <th scope="col"># Título</th>
@@ -33,19 +33,21 @@
         <tbody>
         <div th:each="jev : ${jevs}">
             <tr>
-                <td><i class="fas fa-code fa-2x"></i><a th:href="@{/justiceevents/{id}(id=${jev.id})}"><span th:text="${jev.eventTitle}"></span></a></td></td>
+                <td>
+                    <a th:href="@{/justiceevents/{id}(id=${jev.id})}">
+                        <i class="fas fa-code"></i>
+                        <span th:text="${jev.eventTitle}"></span>
+                    </a>
+                </td>
                 <td><span th:text="${jev.eventLocation}"></span></td>
                 <td><span th:text="${jev.informer}"></span></td>
-                <td><span th:text="${#dates.format(jev.eventStartDate, 'dd.MM.yyyy')}"></span></td>
-                <td><span th:text="${#dates.format(jev.eventEndDate, 'dd.MM.yyyy')}"></span></td>
+                <td><span th:text="${#dates.format(jev.eventStartDate, 'yyyy-MM-dd')}"></span></td>
+                <td><span th:text="${#dates.format(jev.eventEndDate, 'yyyy-MM-dd')}"></span></td>
                 <td><span th:text="${jev.peopleAttended}"></span></td>
                 <td>
                     <a th:href="@{/events/delete/{id}(id=${jev.id})}">
-                        <i class="fas fa-eraser fa-3x"></i>
+                        <i class="fas fa-eraser"></i>
                         Remover
-                    </a>
-                    <a th:href="@{/justiceevents/{id}(id=${jev.id})}">
-                        Editar
                     </a>
                 </td>
             </tr>

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -39,27 +38,10 @@ public class JusticeEventController {
         return "eventsForm";
     }
 
-    @GetMapping(value="/justiceevents")
-    public String getEvent(){
-
-        return "events";
-    }
-
-
-    // PUT Mapping
-
-    @PutMapping("/justiceevents")
-    public String putEvent(@PathVariable("id") long id, @RequestBody JusticeEvent nje){
-        JusticeEvent je = jer.findById(id);
-        System.out.println("Put response");
-        jer.save(je);
-        return "ok";
-    }
-
     @PostMapping(value="/justiceevents")
     public  String postEvent(JusticeEvent je){
         jer.save(je);
-        return "redirect:/";
+        return "redirect:/index";
     }
     @GetMapping("/")
     public String welcome(){
@@ -78,5 +60,9 @@ public class JusticeEventController {
         return "adminer";
     }
 
+    @GetMapping("/justiceevents")
+    public String showForm(){
+        return "events";
+    }
 
 }

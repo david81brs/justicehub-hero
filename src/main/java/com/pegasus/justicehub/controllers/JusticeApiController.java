@@ -31,9 +31,9 @@ public class JusticeApiController {
         return ResponseEntity.ok(new JusticeEventResponse(je));
     }
 
-    @PutMapping("/justiceevents/{id}")
-    public String updateJusticeEvent(@PathVariable("id") long id, @RequestBody JusticeEvent nje){
-        JusticeEvent je = jer.findById(id);
+    @PutMapping("/justiceevents")
+    public ResponseEntity<?> updateJusticeEvent(@RequestBody JusticeEvent nje){
+        JusticeEvent je = jer.findById(nje.getId());
         je.setPeopleAttended(nje.getPeopleAttended());
         je.setContacPerson(nje.getContacPerson());
         je.setEventEndDate(nje.getEventEndDate());
@@ -42,7 +42,7 @@ public class JusticeApiController {
         je.setEventLocation(nje.getEventLocation());
         je.setInformer(nje.getInformer());
         jer.save(je);
-        return "API ok";
+        return ResponseEntity.ok("Resource Updated!");
 
     }
     @GetMapping(value="/justiceevents/{id}", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Accept=application/json")
