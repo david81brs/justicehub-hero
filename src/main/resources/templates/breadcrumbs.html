@@ -15,12 +15,23 @@
 </head>
 <body>
     <nav th:fragment="breadcrumbs" aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page"><a href="/admin">Administração</a></li>
-            <li th:if="${#httpServletRequest.requestURI =='/index' || #strings.contains(#httpServletRequest.requestURI,'justiceevents') }" class="breadcrumb-item" aria-current="page"><a href="/index">Lista de Eventos</a></li>
-            <li th:if="${#strings.contains(#httpServletRequest.requestURI,'events') && !#strings.contains(#httpServletRequest.requestURI,'justice')}" class="breadcrumb-item" aria-current="page"><a href="/index">Novo Evento</a></li>
-            <li th:if="${#strings.contains(#httpServletRequest.requestURI,'users')}" class="breadcrumb-item" aria-current="page"><a href="/users">Usuários</a></li>
-            <li th:if="${JusticeEvent != null}" class="breadcrumb-item" aria-current="page" th:text="${JusticeEvent.eventTitle}"></li>
+        <ol class="breadcrumb nounderline">
+            <li class="breadcrumb-item active" aria-current="page">
+                <a href="/admin"><i class="fas fa-cogs"></i> Administração</a>
+            </li>
+            <li th:if="${#httpServletRequest.requestURI =='/index' || #strings.contains(#httpServletRequest.requestURI,'justiceevents') }" class="breadcrumb-item" aria-current="page">
+                <a href="/index"><i class="fas fa-calendar-alt"></i> Lista de Eventos</a>
+            </li>
+            <li th:if="${#strings.contains(#httpServletRequest.requestURI,'events') && !#strings.contains(#httpServletRequest.requestURI,'justice')}" class="breadcrumb-item" aria-current="page">
+                <a href="/index"><i class="far fa-calendar-alt"></i> Novo Evento</a>
+            </li>
+            <li th:if="${#strings.contains(#httpServletRequest.requestURI,'users')}" class="breadcrumb-item" aria-current="page">
+                <a href="/users"><i class="far fa-address-book"></i> Usuários</a>
+            </li>
+            <li th:if="${JusticeEvent != null}" class="breadcrumb-item" aria-current="page" >
+                <i class="far fa-calendar-alt"></i>
+                <span th:text="${JusticeEvent.eventTitle}"></span>
+            </li>
 
         </ol>
     </nav>
