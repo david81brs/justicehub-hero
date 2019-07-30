@@ -2,6 +2,7 @@ package com.pegasus.justicehub.controllers;
 
 import com.pegasus.justicehub.models.JusticeEvent;
 import com.pegasus.justicehub.repository.JusticeEventRepository;
+import com.pegasus.justicehub.services.JusticeEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,11 +18,16 @@ public class JusticeEventController {
     @Autowired
     JusticeEventRepository jer;
 
+    @Autowired
+    JusticeEventService jes;
+
     @GetMapping("/index")
     public ModelAndView index(){
         ModelAndView mv = new ModelAndView("index");
         Iterable<JusticeEvent> jevs = jer.findAll();
+        String sumje =  jes.getSumPeopleAttended();
         mv.addObject("jevs", jevs);
+        mv.addObject("sumje", sumje);
         return mv;
     }
 
