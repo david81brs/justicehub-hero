@@ -3,6 +3,8 @@ package com.pegasus.justicehub.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonRootName;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -30,15 +32,26 @@ public class JusticeEvent {
 
     @Column
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", locale = "pt-BR", timezone = "America/Sao_Paulo")
     private Date eventStartDate;
 
     @Column
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", locale = "pt-BR", timezone = "America/Sao_Paulo")
     private Date eventEndDate;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="create_date")
+    private Date createDate;
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="modify_date")
+    private Date modifyDate;
+
 
     @Column
     private long peopleAttended;
@@ -119,5 +132,21 @@ public class JusticeEvent {
                 ", eventEndDate=" + eventEndDate +
                 ", peopleAttended=" + peopleAttended +
                 '}';
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getModifyDate() {
+        return modifyDate;
+    }
+
+    public void setModifyDate(Date modifyDate) {
+        this.modifyDate = modifyDate;
     }
 }
