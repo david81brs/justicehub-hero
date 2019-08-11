@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Erro</title>
+
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/webjars/popper.js/1.12.9-1/umd/popper.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/fontawesome-free-5.9.0/css/all.min.css"/>
+    <link rel="stylesheet" href="/css/main.css"/>
+</head>
+<body>
+<base href="/">
+<div th:replace="navigation :: navigation"></div>
+<div class="container mainc">
+    <h1><i class="fas fa-bug"></i> Erro </h1>
+
+    <p> HTTP Status:
+        <span th:text="${statusCode}"></span>
+    </p>
+    <p th:text="${exception}"></p>
+</div>
+</body>
+</html>
