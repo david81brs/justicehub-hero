@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Perfis</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/webjars/popper.js/1.12.9-1/umd/popper.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/fontawesome-free-5.9.0/css/all.min.css"/>
+    <link rel="stylesheet" th:href="@{css/main.css}" href="/css/main.css"/>
+</head>
+<body>
+<div th:replace="navigation :: navigation"></div>
+<div class="container mainc">
+    <h1><i class="fas fa-user-tag"></i> Perfis</h1>
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Perfil
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <div th:each="single_role : ${role_list}">
+                <tr>
+                    <td>
+                        <span th:text="${single_role.id}"></span>
+                    </td>
+                    <td>
+                        <span th:text="${single_role.name}"></span>
+                    </td>
+                </tr>
+            </div>
+        </tbody>
+    </table>
+    <form id="role-form" action="/roles" th:action="@{/roles}" th:object="${Role}" method="post">
+        <div class="form-group">
+            <label for="name">Perfil:</label>
+            <input type="text" name="name" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Gravar</button>
+    </form>
+</div>
+<script src="/js/role-form.js"></script>
+</body>
+</html>
