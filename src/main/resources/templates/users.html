@@ -12,65 +12,66 @@
     <link rel="stylesheet" href="/css/fontawesome-free-5.9.0/css/all.min.css"/>
 </head>
 <body>
+
 <div th:replace="navigation :: navigation"></div>
+
 <div class="container mainc">
+
     <div th:replace="breadcrumbs :: breadcrumbs"></div>
-    <h1>Usuários Registrados</h1>
-    <table class="table table-hover table-striped">
-        <thead>
-        <tr>
-            <th>User</th>
-            <th>Perfis</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <div th:each="user : ${users}">
-            <tr>
-                <td>
-                    <i class="fas fa-user-tie fa-2x"></i>
-                    <span th:text="${user.username}"></span>
-                </td>
-                <td>
-                    <div th:each="user_roles : ${user.roles}">
-                        <button class="btn btn-success btn-xs">
-                            <span class="label_user" th:text="${user_roles}"></span>
-                            <span class="badge">x</span>
-                        </button>
-                    </div>
 
-                </td>
-                <td>
+    <h1><i class="far fa-address-book"></i> Usuários Registrados</h1>
 
-                    <!-- Formulário para editar                    -->
-                    <form class="form-inline formInTable" th:action="@{/users/{id}(id=${user.id})}" th:method="GET">
-                        <button class="btn btn-info" type="submit"><i class="fas fa-edit"></i> Editar</button>
-                    </form>
-
-                    <!-- Formulário para apagar                    -->
-                    <form class="form-inline formInTable"
-                          th:action="@{/users/{id}(id=${user.id})}" th:method="DELETE">
-                        <input type="hidden" name="id" th:value="${user.id}"/>
-                        <button class="btn btn-danger" type="submit"><i class="fas fa-user-minus"></i> Apagar</button>
-                    </form>
-
-                    <!-- Formulário para atribuir perfil-->
-                    <form class="form-inline formInTable">
-                        <div class="form-group blu-margin">
-                            <select class="form-control" id="dropRoles">
-                                <option value="0">Selecionar Perfil</option>
-                                <option th:each="rol : ${allRoles}" th:value="${rol.id}" th:text="${rol.name}"></option>
-                            </select>
-                        </div>
-                    </form>
-                </td>
-            </tr>
+    <div class="row">
+        <div class="col d-none d-sm-block">
+            <h5>Usuário</h5>
         </div>
+        <div class="col d-none d-sm-block">
+            <h5>Perfis</h5>
+        </div>
+        <div class="col d-none d-sm-block">
+            <h5>Ações</h5>
+        </div>
+    </div>
+<!--     d-none d-md-block users-th -->
 
+    <div th:each="user : ${users}">
+        <div class="row users-th">
+            <div class="col-sm">
+                <i class="fas fa-user-tie fa-2x"></i>
+                <span th:text="${user.username}"></span>
+            </div>
+            <div class="col-sm">
+                <span th:each="user_roles : ${user.roles}">
+                    <a href="#" class="btn btn-outline-success btn-sm">
+                        <span class="label_user" th:text="${user_roles}"></span><span class="badge">x</span>
+                    </a>
+                </span>
+            </div>
+            <div class="col-sm">
+                <!-- Formulário para editar                    -->
+                <form class="form-inline formInTable" th:action="@{/users/{id}(id=${user.id})}" th:method="GET">
+                    <button class="btn btn-info btn-sm" type="submit"><i class="fas fa-edit"></i> Editar</button>
+                </form>
 
-        </tbody>
+                <!-- Formulário para apagar                    -->
+                <form class="form-inline formInTable"
+                      th:action="@{/users/{id}(id=${user.id})}" th:method="DELETE">
+                    <input type="hidden" name="id" th:value="${user.id}"/>
+                    <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-user-minus"></i> Apagar</button>
+                </form>
 
-    </table>
+                <!-- Formulário para atribuir perfil-->
+                <form class="form-inline formInTable">
+                    <select class="form-control" id="dropRoles">
+                        <option  class="dropdown-item" value="0">Selecionar Perfil</option>
+                        <option class="dropdown-item" th:each="rol : ${allRoles}" th:value="${rol.id}" th:text="${rol.name}"></option>
+                    </select>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
     <a href="/registration" class="btn btn-primary">
         <i class="fas fa-plus"></i>
         Novo Usuário

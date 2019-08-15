@@ -23,6 +23,11 @@
 
 h1 {
     font-family: font-family: Arial Narrow,Arial,sans-serif;
+    font-size: 1.6rem;
+}
+h5 {
+    font-family: font-family: Arial Narrow,Arial,sans-serif;
+    font-size: 1.6rem;
 }
 
 .formInTable {
@@ -49,4 +54,13 @@ breadcrumb-item:hover {
 
 .label_user {
     font-size: 8pt;
+}
+
+.users-th {
+    border: 1px solid gray;
+    padding: 5px;
+    margin-bottom:5px;
+    margin-left:5px;
+    margin-left:2px;
+    margin-right:2px;
 }
