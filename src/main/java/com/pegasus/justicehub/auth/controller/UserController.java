@@ -1,7 +1,9 @@
 package com.pegasus.justicehub.auth.controller;
 
+import com.pegasus.justicehub.auth.model.Role;
 import com.pegasus.justicehub.auth.model.User;
 import com.pegasus.justicehub.auth.repository.UserRepository;
+import com.pegasus.justicehub.auth.service.RoleServiceImpl;
 import com.pegasus.justicehub.auth.service.SecurityService;
 import com.pegasus.justicehub.auth.service.UserServiceImpl;
 import com.pegasus.justicehub.auth.validator.UserValidator;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class UserController {
@@ -30,6 +33,9 @@ public class UserController {
 
     @Autowired
     private UserRepository ur;
+
+    @Autowired
+    private RoleServiceImpl roleServiceImpl;
 
     @GetMapping("/registration")
     public String registration(Model model){
@@ -74,7 +80,9 @@ public class UserController {
     @GetMapping("/users")
     public String admin(Model model){
         List<User> lu = userService.findAll();
+        List<Role> allRoles = roleServiceImpl.findAll();
         model.addAttribute("users", lu);
+        model.addAttribute("allRoles", allRoles);
         return "users";
     }
 

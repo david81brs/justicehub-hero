@@ -46,3 +46,7 @@ breadcrumb-item:hover {
 .nounderline {
   text-decoration: none !important
 }
+
+.label_user {
+    font-size: 8pt;
+}

@@ -1,6 +1,9 @@
 package com.pegasus.justicehub.auth.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import javax.persistence.*;
@@ -21,6 +24,7 @@ public class User {
     private String username;
 
     @Column
+    @JsonIgnore
     private String password;
 
     @Column(name = "enabled")
@@ -32,13 +36,16 @@ public class User {
     private String email;
 
     @Column(name = "confirmation_token")
+    @JsonIgnore
     private String confirmationToken;
 
 
     @Transient
+    @JsonIgnore
     private String passwordConfirm;
 
     @ManyToMany
+    @JsonManagedReference
     private Set<Role> roles;
 
     public Long getId() {

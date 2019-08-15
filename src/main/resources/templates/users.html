@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no">
     <title>Pegasus</title>
     <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
-    <link rel="stylesheet" th:href="@{css/main.css}" href="css/main.css"/>
+    <link rel="stylesheet" th:href="@{css/main.css}" href="/css/main.css"/>
     <script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
     <script src="/webjars/popper.js/1.12.9-1/umd/popper.min.js"></script>
     <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -20,6 +20,7 @@
         <thead>
         <tr>
             <th>User</th>
+            <th>Perfis</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -31,13 +32,36 @@
                     <span th:text="${user.username}"></span>
                 </td>
                 <td>
+                    <div th:each="user_roles : ${user.roles}">
+                        <button class="btn btn-primary btn-xs">
+                            <span class="label_user" th:text="${user_roles}"></span>
+                            <span class="badge">x</span>
+                        </button>
+                    </div>
+
+                </td>
+                <td>
+
+                    <!-- Formulário para editar                    -->
                     <form class="form-inline formInTable" th:action="@{/users/{id}(id=${user.id})}" th:method="GET">
                         <button class="btn btn-info" type="submit"><i class="fas fa-edit"></i> Editar</button>
                     </form>
+
+                    <!-- Formulário para apagar                    -->
                     <form class="form-inline formInTable"
                           th:action="@{/users/{id}(id=${user.id})}" th:method="DELETE">
                         <input type="hidden" name="id" th:value="${user.id}"/>
                         <button class="btn btn-danger" type="submit"><i class="fas fa-user-minus"></i> Apagar</button>
+                    </form>
+
+                    <!-- Formulário para atribuir perfil-->
+                    <form class="form-inline formInTable">
+                        <div class="form-group blu-margin">
+                            <select class="form-control" id="dropRoles">
+                                <option value="0">Selecionar Perfil</option>
+                                <option th:each="rol : ${allRoles}" th:value="${rol.id}" th:text="${rol.name}"></option>
+                            </select>
+                        </div>
                     </form>
                 </td>
             </tr>
