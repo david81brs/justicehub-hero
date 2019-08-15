@@ -28,6 +28,9 @@
             <li th:if="${#strings.contains(#httpServletRequest.requestURI,'users')}" class="breadcrumb-item" aria-current="page">
                 <a href="/users"><i class="far fa-address-book"></i> Usuários</a>
             </li>
+            <li th:if="${#strings.contains(#httpServletRequest.requestURI,'roles')}" class="breadcrumb-item" aria-current="page">
+                <a href="/users"><i class="far fa-address-book"></i> Perfis</a>
+            </li>
             <li th:if="${JusticeEvent != null}" class="breadcrumb-item" aria-current="page" >
                 <i class="far fa-calendar-alt"></i>
                 <span th:text="${JusticeEvent.eventTitle}"></span>
