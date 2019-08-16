@@ -103,13 +103,9 @@ public class UserController {
 
     @DeleteMapping(value = "/users/{id}/roles/{role_id}")
     public String deleteUserRole(@PathVariable("id") long id, @PathVariable("role_id") long role_id){
-        User user_ops = userServiceImpl.findById(id);
-        Set<Role> user_roles = userServiceImpl.getRoles(id);
-        Role roleToRemove = roleServiceImpl.findById(role_id);
-        user_roles.remove(roleToRemove);
-        System.out.println(user_roles);
-        user_ops.setRoles(user_roles);
-        userServiceImpl.save(user_ops);
+        User u = userServiceImpl.findById(id);
+        Set<Role> sr = u.getRoles();
+
         return "redirect:/users";
     }
 

@@ -44,8 +44,13 @@ public class User {
     @JsonIgnore
     private String passwordConfirm;
 
-    @ManyToMany(cascade = CascadeType.MERGE)
+    @ManyToMany
+    @JoinTable(name="users_roles",
+            joinColumns = @JoinColumn(name = "users_id"),
+            inverseJoinColumns = @JoinColumn(name = "roles_id")
+    )
     @JsonManagedReference
+
     private Set<Role> roles;
 
     public Long getId() {
