@@ -1,8 +1,10 @@
 package com.pegasus.justicehub.auth.service;
 
+import com.pegasus.justicehub.auth.model.Role;
 import com.pegasus.justicehub.auth.model.User;
 
 import java.util.List;
+import java.util.Set;
 
 public interface UserService {
     void save(User user);
@@ -16,4 +18,6 @@ public interface UserService {
     User findByConfirmationToken(String confirmationToken);
 
     List findAll();
+
+    Set<Role> getRoles(long id);
 }

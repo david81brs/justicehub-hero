@@ -44,7 +44,7 @@ public class User {
     @JsonIgnore
     private String passwordConfirm;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JsonManagedReference
     private Set<Role> roles;
 

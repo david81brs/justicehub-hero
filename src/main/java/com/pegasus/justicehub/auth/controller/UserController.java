@@ -23,7 +23,7 @@ import java.util.Set;
 public class UserController {
 
     @Autowired
-    private UserServiceImpl userService;
+    private UserServiceImpl userServiceImpl;
 
     @Autowired
     private SecurityService securityService;
@@ -51,7 +51,7 @@ public class UserController {
             return "registration";
         }
 
-        userService.save(userForm);
+        userServiceImpl.save(userForm);
 
         securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
 
@@ -71,7 +71,7 @@ public class UserController {
 
     @GetMapping("/v1/users")
     public ResponseEntity<List<User>> allUsers(){
-        List<User> lu = userService.findAll();
+        List<User> lu = userServiceImpl.findAll();
         //ObjectMapper om = new ObjectMapper();
 
         return new ResponseEntity<List<User>>(lu, HttpStatus.OK);
@@ -79,7 +79,7 @@ public class UserController {
 
     @GetMapping("/users")
     public String admin(Model model){
-        List<User> lu = userService.findAll();
+        List<User> lu = userServiceImpl.findAll();
         List<Role> allRoles = roleServiceImpl.findAll();
         model.addAttribute("users", lu);
         model.addAttribute("allRoles", allRoles);
@@ -89,15 +89,27 @@ public class UserController {
     @GetMapping("/users/{id}")
     public ModelAndView getUserEdit(@PathVariable("id") long id){
         ModelAndView mv = new ModelAndView("userEdit");
-        User user = userService.findById(id);
+        User user = userServiceImpl.findById(id);
         mv.addObject("user", user);
         return mv;
     }
 
     @DeleteMapping("/users/{id}")
     public String deleteUser(@PathVariable("id") long id){
-        User user = userService.findById(id);
+        User user = userServiceImpl.findById(id);
         ur.delete(user);
+        return "redirect:/users";
+    }
+
+    @DeleteMapping(value = "/users/{id}/roles/{role_id}")
+    public String deleteUserRole(@PathVariable("id") long id, @PathVariable("role_id") long role_id){
+        User user_ops = userServiceImpl.findById(id);
+        Set<Role> user_roles = userServiceImpl.getRoles(id);
+        Role roleToRemove = roleServiceImpl.findById(role_id);
+        user_roles.remove(roleToRemove);
+        System.out.println(user_roles);
+        user_ops.setRoles(user_roles);
+        userServiceImpl.save(user_ops);
         return "redirect:/users";
     }
 

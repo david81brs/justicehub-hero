@@ -27,6 +27,9 @@
                 <th>
                     Perfil
                 </th>
+                <th>
+                    Ações
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -37,6 +40,13 @@
                     </td>
                     <td>
                         <span th:text="${single_role.name}"></span>
+                    </td>
+                    <td>
+                        <form class="form-inline formInTable"
+                              th:action="@{/roles/{id}(id=${single_role.id})}" th:method="DELETE">
+                            <input type="hidden" name="id" th:value="${single_role.id}"/>
+                            <button class="btn btn-outline-danger btn-sm" type="submit"><i class="fas fa-user-minus"></i> Apagar</button>
+                        </form>
                     </td>
                 </tr>
             </div>
