@@ -42,8 +42,8 @@
                 </td>
                 <td><span th:text="${jev.eventLocation}"></span></td>
                 <td><span th:text="${jev.informer}"></span></td>
-                <td><span th:text="${#dates.format(jev.eventStartDate, 'yyyy-MM-dd')}"></span></td>
-                <td><span th:text="${#dates.format(jev.eventEndDate, 'yyyy-MM-dd')}"></span></td>
+                <td><span th:text="${#dates.format(jev.eventStartDate, 'dd-MM-yyyy')}"></span></td>
+                <td><span th:text="${#dates.format(jev.eventEndDate, 'dd-MM-yyyy')}"></span></td>
                 <td><span th:text="${jev.peopleAttended}"></span></td>
                 <td>
                     <a th:href="@{/events/delete/{id}(id=${jev.id})}">
