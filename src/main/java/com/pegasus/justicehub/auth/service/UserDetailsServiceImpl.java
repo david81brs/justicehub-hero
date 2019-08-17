@@ -22,6 +22,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private RoleServiceImpl roleServiceImpl;
+
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) {
@@ -29,9 +32,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (user ==null) throw new UsernameNotFoundException(username);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        for (Role role: user.getRoles()){
-            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
-        }
+        Role role = roleServiceImpl.findByName("ROLE_ADMIN");
+        System.out.println(role);
+        grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
+        System.out.println(grantedAuthorities);
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
     }
 }
