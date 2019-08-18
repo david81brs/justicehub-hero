@@ -60,7 +60,25 @@ breadcrumb-item:hover {
     border: 1px solid gray;
     padding: 5px;
     margin-bottom:5px;
-    margin-left:5px;
     margin-left:2px;
     margin-right:2px;
+}
+
+.justice-event {
+    border: 1px solid gray;
+    padding: 5px;
+    margin-bottom: 5px;
+    margin-left: 2px;
+    margin-right:2px;
+    box-shadow: 1px 1px 1px gray;
+}
+.justice-event-th {
+    font-weight:bold;
+}
+.je-th-sm {
+    font-size:0.8rem;
+    font-weight:bold;
+    color:darkblue;
+    margin-top:2px;
+
 }

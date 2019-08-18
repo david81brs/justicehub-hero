@@ -17,58 +17,90 @@
 <div class="container mainc">
     <div th:replace="breadcrumbs :: breadcrumbs"></div>
     <h1>Lista de Eventos</h1>
+    <h1> Total Pessoas Atendidas: <span th:text="${sumje}"></span> </h1>
 
-    <table class="table table-hover table-striped">
-        <thead>
-        <tr>
-            <th scope="col"># Título</th>
-            <th scope="col"># Local</th>
-            <th scope="col"># Resp</th>
-            <th scope="col"># Início</th>
-            <th scope="col"># Fim</th>
-            <th scope="col">Qtd</th>
-            <th scope="col">Actions</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        <div th:each="jev : ${jevs}">
-            <tr>
-                <td>
-                    <a th:href="@{/justiceevents/{id}(id=${jev.id})}">
-                        <i class="fas fa-code"></i>
-                        <span th:text="${jev.eventTitle}"></span>
-                    </a>
-                </td>
-                <td><span th:text="${jev.eventLocation}"></span></td>
-                <td><span th:text="${jev.informer}"></span></td>
-                <td><span th:text="${#dates.format(jev.eventStartDate, 'dd-MM-yyyy')}"></span></td>
-                <td><span th:text="${#dates.format(jev.eventEndDate, 'dd-MM-yyyy')}"></span></td>
-                <td><span th:text="${jev.peopleAttended}"></span></td>
-                <td>
-                    <a th:href="@{/events/delete/{id}(id=${jev.id})}">
-                        <i class="fas fa-eraser"></i>
-                        Remover
-                    </a>
-                </td>
-            </tr>
+    <div class="row">
+        <!--        1-->
+        <div class="col-md-4">
+            <span class="justice-event-th d-none d-sm-block"># Título</span>
         </div>
-        <tr>
-            <td><b>Total</b></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                <b>
-                    <span th:text="${sumje}"></span>
-                </b>
-            </td>
-            <td></td>
-        </tr>
+        <!--        2-->
+        <div class="col">
+            <span class="justice-event-th d-none d-sm-block"># Local</span>
+        </div>
+        <!--        3-->
+        <div class="col">
+            <span class="justice-event-th d-none d-sm-block"># Resp</span>
+        </div>
+        <!--        4-->
+        <div class="col-md-2">
+            <span class="justice-event-th d-none d-sm-block"># Início</span>
 
-        </tbody>
-    </table>
+            <span class="justice-event-th d-none d-sm-block"># Fim</span>
+        </div>
+        <!--        5-->
+        <div class="col">
+            <span class="justice-event-th d-none d-sm-block">Qtd</span>
+        </div>
+        <!--        6-->
+        <div class="col">
+            <span class="justice-event-th d-none d-sm-block">Actions</span>
+        </div>
+    </div>
+
+    <div th:each="jev : ${jevs}">
+        <div class="row justice-event">
+            <!--            1-->
+            <div class="col-md-4">
+                <div class="d-md-none je-th-sm">Título:</div>
+                <i class="fas fa-code"></i>
+                <a th:href="@{/justiceevents/{id}(id=${jev.id})}">
+                    <span th:text="${jev.eventTitle}"></span>
+                </a>
+            </div>
+            <!--            2-->
+            <div class="col">
+                <div class="d-md-none je-th-sm">Local:</div>
+                <span th:text="${jev.eventLocation}"></span>
+            </div>
+            <!--            3-->
+            <div class="col">
+                <div class="d-md-none je-th-sm">Relator:</div>
+                <span th:text="${jev.informer}"></span>
+            </div>
+            <!--            4-->
+            <div class="col-md-2">
+                <div class="d-md-none je-th-sm">Datas:</div>
+                <span class="btn btn-outline-info btn-sm" th:text="${#dates.format(jev.eventStartDate, 'dd-MM-yyyy')}"></span>
+
+                <span class="btn btn-outline-danger btn-sm" th:text="${#dates.format(jev.eventEndDate, 'dd-MM-yyyy')}"></span>
+            </div>
+            <!--            5-->
+            <div class="col">
+                <div class="d-md-none je-th-sm">Atendidos:</div>
+                <span th:text="${jev.peopleAttended}"></span>
+            </div>
+            <!--            6-->
+            <div class="col">
+                <div class="d-md-none je-th-sm">Ação:</div>
+                <a th:href="@{/events/delete/{id}(id=${jev.id})}">
+                    <i class="fas fa-eraser"></i>
+                    Remover
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col-md-2"></div>
+        <div class="col">
+            <div class="d-md-none justice-event-th">Total Pessoas Atendidas: <span th:text="${sumje}"></span> </div>
+        </div>
+        <div class="col"></div>
+    </div>
+    <br>
     <a href="/justiceevents" class="btn btn-primary">
         <i class="fas fa-plus"></i>
         Novo Evento
