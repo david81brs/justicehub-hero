@@ -20,4 +20,8 @@ public interface UserService {
     List findAll();
 
     Set<Role> getRoles(long id);
+
+    void addRole(long user_id, long role_id);
+
+    void removeRole(long user_id, long role_id);
 }
