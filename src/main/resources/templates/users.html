@@ -23,13 +23,13 @@
 
     <div class="row">
         <div class="col-sm-3 d-none d-sm-block">
-            <h5>Usuário</h5>
+            <h6>Usuário</h6>
         </div>
         <div class="col-sm-3 d-none d-sm-block">
-            <h5>Perfis</h5>
+            <h6>Atribuições</h6>
         </div>
         <div class="col-sm-6 d-none d-sm-block">
-            <h5>Ações</h5>
+            <h6>Ações e Perfis</h6>
         </div>
     </div>
 <!--     d-none d-md-block users-th -->
@@ -38,9 +38,14 @@
         <div class="row users-th">
             <div class="col-sm-3">
                 <i class="fas fa-user-tie fa-2x"></i>
-                <span th:text="${user.id}"></span>
                 <span th:text="${user.username}"></span>
+                <span class="badge">
+                    <span>&laquo;</span>
+                    <span th:text="${user.id}"></span>
+                    <span>&raquo;</span>
+                </span>
             </div>
+<!--            Remove perfis-->
             <div class="col-sm-3">
                 <span th:each="user_roles : ${user.roles}">
                     <form class="form-inline formInTable" th:action="@{/users/{id}/roles/{role_id}(id=${user.id}, role_id=${user_roles.id})}" th:method="DELETE">
@@ -62,15 +67,16 @@
                     <input type="hidden" name="id" th:value="${user.id}"/>
                     <button class="btn btn-outline-danger btn-sm" type="submit"><i class="fas fa-user-minus"></i> Apagar</button>
                 </form>
+                <span>&Delta;</span>
+                <span>&nabla;</span>
+                <span th:each="rol : ${allRoles}">
+                    <form class="form-inline formInTable" th:action="@{/users/{id}/roles/{role_id}(id=${user.id}, role_id=${rol.id})}" th:method="POST">
+                        <button type="submit" class="btn btn-outline-primary btn-sm">
+                            <span class="label_user" th:text="${rol.name}"></span><span class="badge">&plus;</span>
+                        </button>
+                    </form>
+                </span>
 
-                <!-- Formulário para atribuir perfil-->
-                <form class="form-inline formInTable" th:action="@{/roles}">
-                    <select class="form-control" id="dropRoles">
-                        <option  class="dropdown-item" value="0">Selecionar Perfil</option>
-                        <option class="dropdown-item" th:each="rol : ${allRoles}" th:value="${rol.id}" th:text="${rol.name}"></option>
-                    </select>
-                    <button class="btn btn-default btn-outline-primary btn-sm" type="submit"><i class="fas fa-plus"></i> Perfil</button>
-                </form>
             </div>
         </div>
     </div>

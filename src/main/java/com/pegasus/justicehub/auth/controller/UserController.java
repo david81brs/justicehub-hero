@@ -103,9 +103,13 @@ public class UserController {
 
     @DeleteMapping(value = "/users/{id}/roles/{role_id}")
     public String deleteUserRole(@PathVariable("id") long id, @PathVariable("role_id") long role_id){
-        User u = userServiceImpl.findById(id);
-        Set<Role> sr = u.getRoles();
+        userServiceImpl.removeRole(id, role_id);
+        return "redirect:/users";
+    }
 
+    @PostMapping(value = "/users/{id}/roles/{role_id}")
+    public String addUserRole(@PathVariable("id") long id, @PathVariable("role_id") long role_id){
+        userServiceImpl.addRole(id,role_id);
         return "redirect:/users";
     }
 
