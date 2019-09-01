@@ -2,6 +2,7 @@ package com.pegasus.justicehub.auth.service;
 
 import com.pegasus.justicehub.auth.model.Role;
 import com.pegasus.justicehub.auth.model.User;
+import org.springframework.context.annotation.Bean;
 
 import java.util.List;
 import java.util.Set;
